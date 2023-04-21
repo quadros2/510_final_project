@@ -1,5 +1,5 @@
 import styles from './landing.module.scss';
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import axios from 'axios';
 
 function Landing() {
@@ -7,27 +7,44 @@ function Landing() {
   const [summarySelected, setSummarySelected] = useState(true);
   const [textInput, setTextInput] = useState("");
   const [submitClicked, setSubmitClicked] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setSubmitClicked(false);
+    setLoading(false);
+    setTextInput('');
+  }, [summarySelected])
 
   function submitChanged() {
     if (!submitClicked) {
-      setSubmitClicked(true);
+      let queryData;
+      try {
+       queryData = JSON.parse(textInput);
+      } catch {
+        return;
+      }
 
-      let queryData = JSON.parse(textInput);
       let linkDataArray = queryData.pageProps.data.search_results_page;
       let linkArray = linkDataArray.map((obj) => (obj.orig_url));
       let endpoint = "http://127.0.0.1:5000" + (summarySelected ? "/summarize" : "/make_study_guide")
       console.log(endpoint)
       // Do axios request
 
+      setSubmitClicked(true);
+      setLoading(true);
+      setTextInput('');
+
       axios.post(endpoint, {
           websites: linkArray
         })
         .then(function (response) {
           console.log(response);
+          setTextInput(response.data[summarySelected ? 'summaries' : 'study_guides']);
         }).catch(function (error) {
           console.log(error);
+        }).finally(function () {
+          setLoading(false);
         });
-
       //setTextInput(Axios response here)
       //setSubmitClicked(false);
     }
@@ -38,7 +55,7 @@ function Landing() {
       <div className={styles.MainHolder}>
         <div className={styles.CenterHolder}>
           <TypeSelection summarySelected={summarySelected} setSummarySelected={setSummarySelected}/>
-          <TextInput textInput={textInput} setTextInput={setTextInput}/>
+          <TextInput textInput={textInput} setTextInput={setTextInput} loading={loading}/>
           <div className={`${styles.Button} ${textInput !== "" && !submitClicked ? styles.Selectable : ""}`}  onClick={submitChanged}> Submit </div>
 
         </div>
@@ -77,10 +94,17 @@ function TextInput(props) {
     <div className={styles.TextInput}>
       <div className={styles.Instructions}>Paste CDL Search Response Here</div>
       <textarea className={styles.TextArea} value={props.textInput} onChange={textChanged}/> 
+      {props.loading ? <Spinner/> : null}
     </div>
 
 
   );
+}
+
+function Spinner() {
+  return <div className={styles.Spinner}>
+    <div/><div/><div/>
+  </div>
 }
 
 export default Landing;
