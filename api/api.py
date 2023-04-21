@@ -1,6 +1,7 @@
 import os
 import json 
 
+
 from flask_cors import CORS
 from flask import (
     Flask,
@@ -8,11 +9,16 @@ from flask import (
     jsonify,
 )
 
+app = Flask(__name__)
+CORS(app)
+
+from chatgpt_wrapper import OpenAIAPI
+
 from prompts import get_summary_prompt, get_study_guide_prompt
 
 def setup_model(**kwargs):
 
-    api_key_file = kwargs.get("api_key_file", "api/secret.key")
+    api_key_file = kwargs.get("api_key_file", "secret.key")
     with open(api_key_file, "r") as f:
         api_key = f.readline().strip()
 

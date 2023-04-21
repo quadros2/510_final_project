@@ -15,8 +15,8 @@ function Landing() {
       let queryData = JSON.parse(textInput);
       let linkDataArray = queryData.pageProps.data.search_results_page;
       let linkArray = linkDataArray.map((obj) => (obj.orig_url));
-      let endpoint = process.env.REACT_BASE_URL + (summarySelected ? "/summarize" : "/make_study_guide")
-
+      let endpoint = "http://127.0.0.1:5000" + (summarySelected ? "/summarize" : "/make_study_guide")
+      console.log(endpoint)
       // Do axios request
 
       axios.post(endpoint, {
