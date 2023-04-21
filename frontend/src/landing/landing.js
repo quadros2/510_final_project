@@ -1,5 +1,6 @@
 import styles from './landing.module.scss';
 import React, {useState} from "react";
+import axios from 'axios';
 
 function Landing() {
 
@@ -14,8 +15,19 @@ function Landing() {
       let queryData = JSON.parse(textInput);
       let linkDataArray = queryData.pageProps.data.search_results_page;
       let linkArray = linkDataArray.map((obj) => (obj.orig_url));
-      console.log(linkArray);
+      let endpoint = process.env.REACT_BASE_URL + (summarySelected ? "/summarize" : "/make_study_guide")
+
       // Do axios request
+
+      axios.post(endpoint, {
+          websites: linkArray
+        })
+        .then(function (response) {
+          console.log(response);
+        }).catch(function (error) {
+          console.log(error);
+        });
+
       //setTextInput(Axios response here)
       //setSubmitClicked(false);
     }
