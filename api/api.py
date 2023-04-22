@@ -1,5 +1,6 @@
 import os
 import json 
+import requests
 
 
 from flask_cors import CORS
@@ -81,3 +82,14 @@ def study_guide_endpoint():
             response.headers.add('Access-Control-Allow-Origin', '*')
             return response
         return "Invalid input"
+
+@app.route('/cdl_proxy', methods=['POST'])
+def cdl_proxy():
+    NEXTJS_BUILD_ID = 'kHpFSi5J1QZ_yapKDCt87'
+    token = request.json['token']
+    query = request.json['query']
+    cdl_response = requests.get(
+        url=f'https://textdata.org/_next/data/{NEXTJS_BUILD_ID}/search.json?query={query}&community=all&page=0',
+        cookies={ 'token': token }
+    )
+    return cdl_response.json()
