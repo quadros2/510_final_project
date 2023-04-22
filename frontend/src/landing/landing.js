@@ -32,7 +32,7 @@ function Landing() {
       tokenRef.current = await getToken();
     }
     return axios.post('http://127.0.0.1:5000/cdl_proxy', {
-      query,
+      query: encodeURIComponent(query),
       token: tokenRef.current
     })
       .then(res => {
