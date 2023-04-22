@@ -130,7 +130,7 @@ function Spinner() {
 }
 
 function Result(props) {
-  const urlRegex = /'?(https?:[\w-.~!*();:@&=+$,/?%#\[\]]*[^:')])'?/;
+  const urlRegex = /'?(https?:[\w-.~!*'();:@&=+$,/?%#\[\]]*[\w-.~!*(;@&=+$,/?%#\[\]])'?/;
   return (
     <div className={styles.TextInput}>
       <div className={styles.Instructions}>Results from CDL+ChatGPT</div>
