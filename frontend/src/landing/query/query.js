@@ -30,13 +30,16 @@ function Query(props) {
     if (query !== "" && canSubmit && props.currentPos === 0) {
       setCanSubmit(false);
       setIsError(false)
+      props.bottomBar(false);
       let linkArray = await getSearchResults(query);
       if (linkArray.length === 0) {
         setIsError(true)
         setCanSubmit(true);
+        props.bottomBar(true);
       } else {
         props.finished(linkArray)
         setCanSubmit(true);
+        props.bottomBar(true);
         setQuery("");
       }
     }
@@ -54,7 +57,7 @@ function Query(props) {
       <div className={styles.FieldHolder}>
         <div>
           <p>&nbsp;Search Query</p>
-          <input type="text" className={styles.FormField} placeholder="Search Your Communities" value={query} onChange={(e) => setQuery(e.target.value)}/>
+          <input type="text" onKeyDown={(e) => {if (e.key === 'Enter') searchClicked()}} className={styles.FormField} placeholder="Search Your Communities" value={query} onChange={(e) => setQuery(e.target.value)}/>
         </div>
 
       </div>

@@ -30,9 +30,13 @@ function Login(props) {
         setCanSubmit(true);
       } else {
         props.finished(token)
+        setCanSubmit(true);
       }
     }
   }
+
+  
+
 
   return(
     <div className={`${styles.LoginHolder} ${props.currentPos === 0 ? styles.Center : ""} ${props.currentPos === -1 ? styles.Left : ""}`}>
@@ -51,7 +55,7 @@ function Login(props) {
 
         <div>
           <p>&nbsp;Password</p>
-          <input type="password" className={styles.FormField} name="password" placeholder="Enter Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+          <input type="password" onKeyDown={(e) => {if (e.key === 'Enter') loginClicked()}} className={styles.FormField} name="password" placeholder="Enter Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
         </div>
       </div>
 

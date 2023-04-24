@@ -6,6 +6,35 @@
   height: 100%;
   position: relative;
 
+  .BottomBar{
+    width: 100%;
+    height: 5%;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    .Dots{
+      aspect-ratio: 1;
+      height: 20%;
+      background-color: #EDFCFF;
+      border-radius: 100px;
+      transition: all 2s;
+      cursor: default;
+    }
+
+    .Dots.Selected{
+      background-color: #6BAC7A;
+    }
+
+    .Dots.Selectable{
+      cursor: pointer;
+    }
+
+  }
+
 }
 
 

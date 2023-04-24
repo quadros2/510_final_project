@@ -18,7 +18,8 @@ function Options(props) {
     if (canSelect && props.currentPos === 0) {
       setSummarySelected(isSummary)
       setCanSelect(false);
-      setIsError(false)
+      setIsError(false);
+      props.bottomBar(false);
 
       let endpoint = "http://127.0.0.1:5000" + (isSummary ? "/summarize" : "/make_study_guide")
       
@@ -28,9 +29,11 @@ function Options(props) {
       .then(function (response) {
         props.finished(response.data[isSummary ? 'summaries' : 'study_guides'])
         setCanSelect(true);
+        props.bottomBar(true);
       }).catch(function () {
         setIsError(true)
         setCanSelect(true);
+        props.bottomBar(true);
       })
 
     }
