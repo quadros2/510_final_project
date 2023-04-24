@@ -1,0 +1,77 @@
+.QueryHolder{
+  height: 30%;
+  width: 50vh;
+  position: absolute;
+  top: 50%;
+  right: 0%;
+  transform: translate(0, -50%);
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  z-index: 3;
+
+  .Title{
+    font-size: 2vw;
+  }
+
+  .FieldHolder{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    .FormField{
+      width: 100%;
+      padding: 5px 10px;
+      margin-top: 2px;
+      line-height: 1.5;
+      color: #212529;
+      background-color: #fff;
+      border: 1px solid #ced4da;
+      border-radius: 10px;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+    }
+  }
+
+  .Submit{
+    cursor: default;
+    font-size: 1.5vw;
+    height: 2vw;
+    background-color: #97AFB9;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 15px;
+    transition: all .5s;
+  }
+
+  .Submit.Selectable{
+    cursor: pointer;
+    background-color: #6BAC7A;
+  }
+
+  .Submit.Selectable:hover{
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 12px;
+  }
+}
+
+.QueryHolder.Center{
+  right: 50%;
+  transform: translate(50%, -50%);
+  transition: all 2s, opacity 1s;
+  opacity: 1;
+}
+
+.QueryHolder.Left{
+  right: 100%;
+  transform: translate(100%, -50%);
+  transition: all 2s, opacity 1s;
+  opacity: 0;
+}
+

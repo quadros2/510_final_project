@@ -1,0 +1,87 @@
+.ResultsHolder{
+  height: 80%;
+  aspect-ratio: 1;
+  position: absolute;
+  top: 50%;
+  right: 0%;
+  transform: translate(50%, -50%);
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  z-index: 1;
+  transition: all 2s, opacity 1s;
+
+  .Title{
+    font-size: 2vw;
+  }
+
+  
+  .TextInput{
+    width: 90%;
+    height: 70%;
+    overflow: hidden;
+    
+    .TextArea{
+      width: 100%;
+      height: 100%;
+      border-radius: 15px;
+      resize: none;
+      padding: 2%;
+      font-size: 1.25vw;
+      box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+      background: white;
+    }
+
+    .TextArea:focus{
+      outline:none;
+    }
+
+    .ExternalLink {
+      height: 1em;
+      width: 1em;
+      color: #4C8BF5;
+      vertical-align: middle;
+    }
+  }
+
+
+  .Submit{
+    cursor: default;
+    font-size: 1.5vw;
+    height: 2vw;
+    background-color: #97AFB9;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 15px;
+    transition: all .5s;
+  }
+
+  .Submit.Selectable{
+    cursor: pointer;
+    background-color: #6BAC7A;
+  }
+
+  .Submit.Selectable:hover{
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 12px;
+  }
+}
+
+.ResultsHolder.Center{
+  right: 50%;
+  transform: translate(50%, -50%);
+  opacity: 1;
+}
+
+.ResultsHolder.Left{
+  right: 100%;
+  transform: translate(100%, -50%);
+  opacity: 0;
+}
+
