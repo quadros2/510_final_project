@@ -5,15 +5,17 @@ import Login from './login/login';
 import Options from './options/options';
 import Results from './results/results';
 
+const cdlToken = sessionStorage.getItem('cdl_token');
 
 function Landing() {
   //-1 = Left, 0 = Center, 1 = Right
-  const [currentPage, setCurrentPage] = useState([0, 1, 1, 1]);
-  const tokenRef = useRef('');
+  const [currentPage, setCurrentPage] = useState(cdlToken ? [-1, 0, 1, 1] : [0, 1, 1, 1]);
+  const tokenRef = useRef(cdlToken);
   const linkArray = useRef([]);
   const [responseText, setResponseText] = useState('');
 
   function loginFinished(token) {
+    sessionStorage.setItem('cdl_token', token)
     tokenRef.current = token
     setCurrentPage([-1, 0, 1, 1])
   }

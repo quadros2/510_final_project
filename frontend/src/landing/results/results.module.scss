@@ -43,6 +43,10 @@
       outline:none;
     }
 
+    .Paragraph {
+      margin-top: 1em;
+    }
+
     .ExternalLink {
       height: 1em;
       width: 1em;
@@ -71,6 +75,7 @@
   .Submit.Selectable:hover{
     box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 12px;
   }
+
 }
 
 .ResultsHolder.Center{

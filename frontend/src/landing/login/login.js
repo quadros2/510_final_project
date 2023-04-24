@@ -13,8 +13,8 @@ function Login(props) {
 
   function getToken() {
     return axios.post("https://textdata.org/api/login", { 
-      username: process.env.REACT_APP_USERNAME || username,
-      password: process.env.REACT_APP_PASSWORD || password
+      username: username,
+      password: password
     })
       .then(res => res.data.token)
       .catch(() => '')
