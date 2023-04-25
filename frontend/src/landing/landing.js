@@ -48,7 +48,7 @@ function Landing() {
     let currentPos = currentPage.indexOf(0);
     let dots = []
     for(let i = 0; i < currentPage.length; i++) {
-      dots.push(<div key={i} onClick={(i < currentPos || (i === 1 && tokenRef && currentPos !== 1)) && bottomBarEnabled ? (() => changePage(i)) : null} className={`${styles.Dots} ${((i < currentPos || (i === 1 && tokenRef && currentPos !== 1)) && bottomBarEnabled) ? styles.Selectable : ""} ${currentPage[i] === 0 ? styles.Selected : ""}`}></div>)
+      dots.push(<div key={i} onClick={(i < currentPos || (i === 1 && tokenRef.current && currentPos !== 1)) && bottomBarEnabled ? (() => changePage(i)) : null} className={`${styles.Dots} ${((i < currentPos || (i === 1 && tokenRef.current && currentPos !== 1)) && bottomBarEnabled) ? styles.Selectable : ""} ${currentPage[i] === 0 ? styles.Selected : ""}`}></div>)
     }
     return dots;
   }
