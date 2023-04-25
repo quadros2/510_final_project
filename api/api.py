@@ -88,8 +88,9 @@ def cdl_proxy():
     NEXTJS_BUILD_ID = 'kHpFSi5J1QZ_yapKDCt87'
     token = request.json['token']
     query = request.json['query']
+    community = request.json['community']
     cdl_response = requests.get(
-        url=f'https://textdata.org/_next/data/{NEXTJS_BUILD_ID}/search.json?query={query}&community=all&page=0',
+        url=f'https://textdata.org/_next/data/{NEXTJS_BUILD_ID}/search.json?query={query}&community={community}&page=0',
         cookies={ 'token': token }
     )
     return cdl_response.json()
