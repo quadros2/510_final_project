@@ -20,6 +20,73 @@
     font-size: 2vw;
   }
 
+  .Break{
+    width: 80%;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+    .MiddleText{
+      position: absolute;
+      top: 50%; 
+      right: 50%;
+      transform: translate(50%,0%);
+      background-color: white;
+      padding-left: 2%;
+      padding-right: 2%;
+    }
+    .Line{
+      width: 100%;
+      border: solid .5px #ced4da;
+    }
+  }
+
+  .FieldHolder{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    overflow: visible;
+    align-items: center;
+
+    .FormField{
+      width: 100%;
+      padding: 5px 10px;
+      margin-top: 2px;
+      line-height: 1.5;
+      background-color: #fff;
+      border: 1px solid #ced4da;
+      border-radius: 10px;
+      color: #212529;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      display: flex;
+      align-items: center;
+
+    }
+
+    .Option{
+      cursor: default;
+      font-size: 1.5vw;
+      height: 2vw;
+      background-color: #97AFB9;
+      color: white;
+      padding: 5px 15px;
+      border-radius: 15px;
+      transition: all .5s;
+      width: max-content;
+    }
+  
+    .Option.Selectable{
+      cursor: pointer;
+      background-color: #6BAC7A;
+    }
+  
+    .Option.Selectable:hover{
+      box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 12px;
+    }
+
+  }
+
   .OptionButtonHolder{
 
     display: flex;

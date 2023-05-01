@@ -15,7 +15,7 @@ CORS(app)
 
 from chatgpt_wrapper import OpenAIAPI
 
-from prompts import get_summary_prompt, get_study_guide_prompt
+from prompts import get_summary_prompt, get_study_guide_prompt, get_general_prompt
 
 def setup_model(**kwargs):
 
