@@ -7,3 +7,8 @@ def get_study_guide_prompt(data):
     return (
         f"Please create study guide questions for each of these websites: {data['websites']}"
     )
+
+def get_general_prompt(data):
+    return (
+        f"Please answer this prompt \"{data['prompt']}\". Use these websites in your response if possible - {data['websites']}"
+    )

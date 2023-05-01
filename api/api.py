@@ -81,3 +81,28 @@ def study_guide_endpoint():
             response.headers.add('Access-Control-Allow-Origin', '*')
             return response
         return "Invalid input"
+
+@app.route('/general_prompt', methods=['GET', 'POST'])
+def general_prompt_endpoint():
+    """ Generates a study guide for each webpage from ChatGPT """
+    """ Assuming API input is a list of links """
+    if request.method == "POST":
+        data = request.data
+        if data:
+            data = json.loads(data.decode("utf-8"))
+
+            general_prompt = get_general_prompt(data)
+            success, general_answer, message = chatGPT.ask(general_prompt)
+            if not success:
+                return message
+            
+            
+            response = jsonify({
+                'websites': data['websites'],
+                'general_prompt': data['prompt'],
+                'general_answer': general_answer
+            })
+
+            response.headers.add('Access-Control-Allow-Origin', '*')
+            return response
+        return "Invalid input"
