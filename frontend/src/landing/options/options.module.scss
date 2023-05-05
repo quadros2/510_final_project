@@ -1,5 +1,5 @@
 .OptionsHolder{
-  height: 30%;
+  height: 50%;
   width: 50vh;
   position: absolute;
   top: 50%;
@@ -24,11 +24,12 @@
     width: 80%;
     margin-top: 2.5%;
     margin-bottom: 2.5%;
+    position: relative;
+    overflow: visible;
     .MiddleText{
       position: absolute;
-      top: 50%; 
       right: 50%;
-      transform: translate(50%,0%);
+      transform: translate(50%,-50%);
       background-color: white;
       padding-left: 2%;
       padding-right: 2%;

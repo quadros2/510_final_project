@@ -5,7 +5,7 @@ import Spinner from '../spinner/spinner';
 
 function Options(props) {
 
-  // -1 = Custom, 0 = Summary, 1 = Study Guide 
+  // -1 = Custom, 0 = Summary, 1 = Study Guide, 2 = Research Directions, 3 = Project Ideas
   const [optionSelected, setOptionSelected] = useState(0);
   const [query, setQuery] = useState("");
 
@@ -32,6 +32,14 @@ function Options(props) {
         case 1:
           ending = "/make_study_guide"
           responseType = "study_guides"
+          break;
+        case 2:
+          ending = "/get_research_directions"
+          responseType = "research_directions"
+          break;
+        case 3:
+          ending = "/get_project_ideas"
+          responseType = "project_ideas"
           break;
       }
 
@@ -78,6 +86,18 @@ function Options(props) {
           {!canSelect && optionSelected === 1 ? <Spinner/> : "Study Guide"}
         </div>
 
+      </div>
+      
+      <div className={styles.OptionButtonHolder}>
+        <div className={`${styles.Option} ${(canSelect && props.currentPos === 0) ? styles.Selectable : ""}`} onClick={() => optionClicked(2)}>
+          {!canSelect && optionSelected === 2 ? <Spinner/> : "Research Directions"}
+        </div>
+      </div>
+      
+      <div className={styles.OptionButtonHolder}>
+        <div className={`${styles.Option} ${(canSelect && props.currentPos === 0) ? styles.Selectable : ""}`} onClick={() => optionClicked(3)}>
+          {!canSelect && optionSelected === 3 ? <Spinner/> : "Project Ideas"}
+        </div>
       </div>
 
       <div className={styles.Break}>
