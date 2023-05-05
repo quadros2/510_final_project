@@ -12,3 +12,8 @@ def get_general_prompt(data):
     return (
         f"Please answer this prompt \"{data['prompt']}\". Use these websites in your response if possible - {data['websites']}"
     )
+
+def get_research_direction_prompt(data):
+    return (
+        f"Please me some good research directions from these websites: {data['websites']}"
+    )
