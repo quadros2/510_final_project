@@ -17,3 +17,8 @@ def get_research_direction_prompt(data):
     return (
         f"Please me some good research directions from these websites: {data['websites']}"
     )
+
+def get_project_ideas_prompt(data):
+    return (
+        f"Please give me some good, basic, Information Retrieval project ideas that use the concepts mentioned in these websites: {data['websites']}"
+    )

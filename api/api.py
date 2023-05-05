@@ -15,7 +15,7 @@ CORS(app)
 
 from chatgpt_wrapper import OpenAIAPI
 
-from prompts import get_summary_prompt, get_study_guide_prompt, get_general_prompt, get_research_direction_prompt
+from prompts import get_summary_prompt, get_study_guide_prompt, get_general_prompt, get_research_direction_prompt, get_project_ideas_prompt
 
 def setup_model(**kwargs):
 
@@ -138,6 +138,30 @@ def research_directions_endpoint():
             response = jsonify({
                 'websites': data['websites'],
                 'research_directions': research_directions
+            })
+
+            response.headers.add('Access-Control-Allow-Origin', '*')
+            return response
+        return "Invalid input"
+
+@app.route('/get_project_ideas', methods=['GET', 'POST'])
+def project_ideas_endpoint():
+    """ Produces Research Directions from the papers feed to it """
+    """ Assuming API input is a list of links """
+    if request.method == "POST":
+        data = request.data
+        if data:
+            data = json.loads(data.decode("utf-8"))
+
+            project_ideas_prompt = get_project_ideas_prompt(data)
+            success, project_ideas, message = chatGPT.ask(project_ideas_prompt)
+            if not success:
+                return message
+            
+            
+            response = jsonify({
+                'websites': data['websites'],
+                'project_ideas': project_ideas
             })
 
             response.headers.add('Access-Control-Allow-Origin', '*')
