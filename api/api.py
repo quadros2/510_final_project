@@ -97,7 +97,7 @@ def cdl_proxy():
 
 @app.route('/general_prompt', methods=['GET', 'POST'])
 def general_prompt_endpoint():
-    """ Generates a study guide for each webpage from ChatGPT """
+    """ Answers any free form chatGPT question """
     """ Assuming API input is a list of links """
     if request.method == "POST":
         data = request.data
@@ -146,7 +146,7 @@ def research_directions_endpoint():
 
 @app.route('/get_project_ideas', methods=['GET', 'POST'])
 def project_ideas_endpoint():
-    """ Produces Research Directions from the papers feed to it """
+    """ Produces project ideas from the papers feed to it """
     """ Assuming API input is a list of links """
     if request.method == "POST":
         data = request.data
