@@ -19,7 +19,7 @@ from prompts import get_summary_prompt, get_study_guide_prompt, get_general_prom
 
 def setup_model(**kwargs):
 
-    api_key_file = kwargs.get("api_key_file", "secret.key")
+    api_key_file = kwargs.get("api_key_file", "secrets.key")
     with open(api_key_file, "r") as f:
         api_key = f.readline().strip()
 
@@ -90,8 +90,8 @@ def cdl_proxy():
     query = request.json['query']
     community = request.json['community']
     cdl_response = requests.get(
-        url=f'https://textdata.org/_next/data/{NEXTJS_BUILD_ID}/search.json?query={query}&community={community}&page=0',
-        cookies={ 'token': token }
+        url=f'https://textdata.org/api/search?query={query}&community={community}&page=0',
+        headers={ 'Authorization': token }
     )
     return cdl_response.json()
 

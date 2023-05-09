@@ -21,7 +21,7 @@ function Query(props) {
     })
       .then(res => {
         let queryData = res.data;
-        let linkDataArray = queryData.pageProps.data.search_results_page;
+        let linkDataArray = queryData.search_results_page;
         let linkArray = linkDataArray.map((obj) => (obj.orig_url));
         return linkArray;
       })
