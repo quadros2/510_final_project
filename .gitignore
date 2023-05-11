@@ -1,3 +1,4 @@
 api/secret.key
+api/secrets.key
 api/__pycache__
 api/venv
